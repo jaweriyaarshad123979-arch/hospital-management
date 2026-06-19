@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments - Liaquat National Hospital</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="js/storage.js"></script>
+    <script>
+        Storage.checkAuth(['Admin', 'Receptionist']);
+    </script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">Liaquat National Appointments</a>
+        <div class="navbar-links">
+            <div id="appointment-nav-links" style="display: inline-flex; gap: 20px;"></div>
+            <button onclick="Storage.logout()" class="btn btn-danger" style="padding: 6px 15px; font-size: 0.9rem;">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3 style="margin-bottom: 15px; color: var(--secondary-color);">Book Appointment</h3>
+                <div id="apt-error" class="alert alert-danger" style="display: none;"></div>
+                <div id="apt-success" class="alert alert-success" style="display: none;"></div>
+
+                <form id="appointment-form">
+                    <div class="form-group">
+                        <label for="aptPatient">Select Patient</label>
+                        <select id="aptPatient" class="form-control" required>
+                            <option value="">-- Choose Patient --</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="aptDoctor">Select Authorized Doctor</label>
+                        <select id="aptDoctor" class="form-control" required>
+                            <option value="">-- Choose Doctor --</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="aptDate">Appointment Date</label>
+                        <input type="date" id="aptDate" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" style="background-color: var(--secondary-color);">Schedule Appointment</button>
+                </form>
+            </div>
+
+            <div class="card" style="grid-column: span 2;">
+                <h3 style="color: var(--secondary-color); margin-bottom: 15px;">Global Appointments Manifest</h3>
+                
+                <div class="table-responsive">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Assigned Doctor</th>
+                                <th>Schedule Date</th>
+                                <th>Status Badge</th>
+                                <th style="text-align: center;">Change Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="appointments-table-body"></tbody>
+                    </table>
+                </div>
+                <div id="appointments-empty" style="display: none; text-align: center; padding: 30px; color: var(--text-light);">No appointments found.</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients Directory - Liaquat National Hospital</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="js/storage.js"></script>
+    <script>
+        Storage.checkAuth(['Admin', 'Receptionist']);
+    </script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">Liaquat National Hospital Patients</a>
+        <div class="navbar-links">
+            <div id="nav-role-links" style="display: inline-flex; gap: 20px;"></div>
+            <button onclick="Storage.logout()" class="btn btn-danger" style="padding: 6px 15px; font-size: 0.9rem;">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3 style="margin-bottom: 15px; color: var(--primary-color);">Register New Patient</h3>
+                <div id="patient-error" class="alert alert-danger" style="display: none;"></div>
+                <div id="patient-success" class="alert alert-success" style="display: none;"></div>
+
+                <form id="patient-form">
+                    <div class="form-group">
+                        <label for="patName">Patient Full Name</label>
+                        <input type="text" id="patName" class="form-control" placeholder="Enter patient name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="patAge">Age</label>
+                        <input type="number" id="patAge" class="form-control" placeholder="Age" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="patGender">Gender</label>
+                        <select id="patGender" class="form-control" required>
+                            <option value="">-- Select Gender --</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="patContact">Contact Number</label>
+                        <input type="text" id="patContact" class="form-control" placeholder="e.g., 0300-1234567" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Register Patient</button>
+                </form>
+            </div>
+
+            <div class="card" style="grid-column: span 2;">
+                <h3 style="color: var(--primary-color); margin-bottom: 5px;">Patients Directory List</h3>
+                <input type="text" id="search-patients" class="form-control" placeholder="🔍 Search patients by name..." style="margin-bottom: 15px;">
+                
+                <div class="table-responsive">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Patient ID</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Contact No</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patients-table-body"></tbody>
+                    </table>
+                </div>
+                <div id="patients-empty" style="display: none; text-align: center; padding: 30px; color: var(--text-light);">No patients registered yet.</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Liaquat National Hospital</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        body {
+            background-image: linear-gradient(rgba(43, 108, 176, 0.6), rgba(49, 151, 149, 0.5)), 
+                              url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        /* Yahan se aapke form card ki width barha di gayi hai */
+        .form-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 35px; /* Padding thodi barha di hai taaky spacing achi lage */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 480px; /* Pehle yeh narrow tha, ab iski width perfect phail gayi hai */
+            margin: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Form groups ki smooth internal alignment ke liye */
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-wrapper" style="width: 100%; display: flex; justify-content: center;">
+        <div class="form-card">
+            <h2 style="text-align: center; margin-bottom: 25px; color: var(--primary-color); font-weight: 700;">Create Account</h2>
+            
+            <div id="error-message" class="alert alert-danger" style="display: none;"></div>
+            <div id="success-message" class="alert alert-success" style="display: none;"></div>
+
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" class="form-control" placeholder="Enter full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="name@hospital.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Select Role</label>
+                    <select id="role" class="form-control" required>
+                        <option value="">-- Select Role --</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Doctor">Doctor</option>
+                        <option value="Receptionist">Receptionist</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Create password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Repeat password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">Register Account</button>
+            </form>
+
+            <p style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: #555;">
+                Already have an account? <a href="login.html" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Login here</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+</html>
